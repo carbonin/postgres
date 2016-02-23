@@ -37,7 +37,7 @@ decoding_failover_create_logical_slot(PG_FUNCTION_ARGS)
 
 	CheckSlotRequirements();
 
-	ReplicationSlotCreate(slotname, true, RS_PERSISTENT);
+	ReplicationSlotCreate(slotname, true, RS_PERSISTENT, false);
 
 	/* register the plugin name with the slot */
 	StrNCpy(NameStr(MyReplicationSlot->data.plugin), plugin, NAMEDATALEN);
@@ -99,8 +99,8 @@ decoding_failover_advance_logical_slot(PG_FUNCTION_ARGS)
 	ReplicationSlotSave();
 	ReplicationSlotRelease();
 
-	ReplicationSlotsComputeRequiredXmin(false);
-	ReplicationSlotsComputeRequiredLSN();
+	ReplicationSlotsUpdateRequiredXmin(false);
+	ReplicationSlotsUpdateRequiredLSN();
 
 	PG_RETURN_VOID();
 }
