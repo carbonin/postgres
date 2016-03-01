@@ -1,0 +1,5 @@
+# worker_spi extension
+comment = 'Logical decoding failover tests'
+default_version = '1.0'
+module_pathname = '$libdir/decoding_failover'
+relocatable = true

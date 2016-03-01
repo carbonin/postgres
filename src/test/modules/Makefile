@@ -7,6 +7,7 @@ include $(top_builddir)/src/Makefile.global
 SUBDIRS = \
 		  brin \
 		  commit_ts \
+		  decoding_failover \
 		  dummy_seclabel \
 		  test_ddl_deparse \
 		  test_extensions \
